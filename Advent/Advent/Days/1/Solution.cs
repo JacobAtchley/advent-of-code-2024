@@ -1,5 +1,3 @@
-using System.Collections.Immutable;
-
 namespace Advent.Days._1;
 
 public static class Solution
