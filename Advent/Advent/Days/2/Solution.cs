@@ -16,12 +16,11 @@ public class Solution
                 return true;
             }
 
-            var diffs = new List<int>();
-            
-            for (var i = 1; i < ints.Length; i++)
-            {
-                diffs.Add((ints[i - 1] - ints[i]));
-            }
+            var diffs = ints
+                .Select((value, index) => new { value, index })
+                .Where(x => x.index > 0)
+                .Select(x => ints[x.index - 1] - x.value)
+                .ToArray();
             
             return diffs.All(x => x is >= 1 and <= 3) || diffs.All(x => x is >= -3 and <= -1);
         }
